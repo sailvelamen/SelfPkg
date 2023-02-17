@@ -1,0 +1,46 @@
+## @file
+#  Sample UEFI Application Reference EDKII Module.
+#
+#  This is a sample shell application that will print Hello,this is Entry of main!" to the
+#  UEFI Console.
+#
+##
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SwSmiDemo
+  FILE_GUID                      = e7c9f370-b018-4ea9-841c-51fba8abe186
+  MODULE_TYPE                    = DXE_SMM_DRIVER
+  VERSION_STRING                 = 1.0
+  PI_SPECIFICATION_VERSION       = 0x0001000A
+  ENTRY_POINT                    = SwSmiDemoMain
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  SwSmiDemo.h
+  SwSmiDemo.c
+
+[Packages]
+  MdePkg/MdePkg.dec                  # SmmServicesTableLib.h/DebugLib
+  UefiPayloadPkg/UefiPayloadPkg.dec  # gSmmRegisterInfoGuid
+  
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  SmmServicesTableLib # gSmst
+  IoLib
+
+[Protocols]
+  gEfiSmmCpuProtocolGuid                   # PROTOCOL ALWAYS_CONSUMED
+  gEfiSmmSwDispatch2ProtocolGuid           # PROTOCOL ALWAYS_PRODUCED  #include <Protocol/SmmSwDispatch2.h>
+
+[Guids]
+  gSmmRegisterInfoGuid
+
+[Depex]
+  gEfiSmmCpuProtocolGuid
+  # gEfiSmmSwDispatch2ProtocolGuid

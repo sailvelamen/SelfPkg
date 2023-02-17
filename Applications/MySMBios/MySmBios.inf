@@ -1,0 +1,27 @@
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = MySmBios
+  FILE_GUID                      = AF0D64B4-9F47-4BB3-A810-3B52D1620044
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  MySmBios.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+  IoLib
+
+[Guids]
+  gEfiSmbiosTableGuid

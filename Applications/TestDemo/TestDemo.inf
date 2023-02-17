@@ -1,0 +1,28 @@
+## @file
+#  Sample UEFI Application Reference EDKII Module.
+#
+#  This is a sample shell application that will print Hello,this is Entry of UefiMain!" to the
+#  UEFI Console.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = TestDemo
+  FILE_GUID                      = A42741A3-3EC6-015A-4217-3B763DF76EC7
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = TestDemoEntryPoint
+
+
+
+[Sources]
+TestDemo.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  IoLib

@@ -1,0 +1,23 @@
+## @file
+#  Sample UEFI Library Reference EDKII Module.
+#
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = MyKeyboardLib
+  FILE_GUID                      = BE25F6D2-8990-43D0-B892-2D7D336675AA
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = MyKeyboardLib
+
+
+[Sources]
+  Keyboard.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiLib

@@ -1,0 +1,27 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PcdTest
+  FILE_GUID                      = 678764C6-E735-A1B1-BD67-32D4B48DC0C1
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = PcdTestEntryPoint
+
+[Sources]
+  PcdTest.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  SelfPkg/SelfPkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  PcdLib
+
+[FeaturePcd]
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintEnable   ## CONSUMES
+
+[Pcd]
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintLoops    ## SOMETIMES_CONSUMES
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintString   ## SOMETIMES_CONSUMES
+

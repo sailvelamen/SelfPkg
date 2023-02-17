@@ -1,0 +1,18 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = MyCMOSLib
+  FILE_GUID                      = b435d59b-6d50-45b0-96e6-f593434a6c26
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = MyCMOSLib
+
+
+[Sources]
+  MyCMOSLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiLib
+  IoLib

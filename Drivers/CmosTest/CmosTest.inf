@@ -1,0 +1,20 @@
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = CmosTest
+  FILE_GUID                      = 596c5a23-c7d3-4723-9c03-17a5aa054453
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = CmosTestEntryPoint
+
+[Sources]
+  CmosTest.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  SelfPkg/SelfPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  IoLib
+  MyCMOSLib

@@ -1,0 +1,24 @@
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = CMOS_Test
+  FILE_GUID                      = ef27b83f-fedf-42fa-b6f5-c42d48fbb1c0
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+[Sources]
+  CMOS_Test.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+  SelfPkg/SelfPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+  
+  IoLib
+  MyCMOSLib

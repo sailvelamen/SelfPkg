@@ -1,0 +1,28 @@
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = SelfPkg
+  PACKAGE_GUID                   = F8DB1FCB-8F6C-40A1-8D5F-8A55C7C7A91E
+  PACKAGE_VERSION                = 1.02
+
+
+[Includes]
+  Include
+  
+[LibraryClasses]
+  MyLibraryLib|SelfPkg/Include/Library/MyLibrary.h
+  MyCMOSLib|SelfPkg/Include/Library/MyCMOSLib.h
+  MyKeyboardLib|SelfPkg/Include/Library/Keyboard.h
+
+[Guids]
+  ## MdeModule package token space guid
+  # Include/Guid/SelfPkgTokenSpace.h
+  gEfiSelfPkgTokenSpaceGuid       = { 0x3BCD66B9, 0x6096, 0x0F2D, { 0x94, 0x58, 0xEB, 0xE5, 0x3D, 0x29, 0xA1, 0x4B }}
+
+  gSelfTestInitFunctionPpiGuid    = { 0x8A094F61, 0x4B1C, 0x1E0B, { 0x08, 0x5D, 0x99, 0x9D, 0xF5, 0xDD, 0xBC, 0xF4 }}
+
+[PcdsFeatureFlag] 
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintEnable|FALSE|BOOLEAN|0x00000001 
+[PcdsFixedAtBuild, PcdsPatchableInModule]
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintLoops|1|UINT32|0x00000002  # PcdsFixedAtBuild
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintString|L"UEFI Hello World!\n"|VOID*|0x00000003 # PcdsFixedAtBuild

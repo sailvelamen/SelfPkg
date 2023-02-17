@@ -1,0 +1,33 @@
+## @file
+#  Sample UEFI DRIVER Reference EDKII Module.
+#
+#  This is a sample shell DRIVER that will print Hello,this is Entry of UefiMain!" to the
+#  UEFI Console.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = MyEvent
+  FILE_GUID                      = B8525191-E907-47DD-8B71-9FB2325E48E9
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = MyEventEntryPoint
+
+
+[Sources]
+MyEvent.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+  SelfPkg/SelfPkg.dec
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiLib
+  MyKeyboardLib
+
+[Protocols]
+  gEfiSimplePointerProtocolGuid

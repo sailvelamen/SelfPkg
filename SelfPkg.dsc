@@ -1,7 +1,7 @@
 [Defines]
   PLATFORM_NAME                  = SelfPkg
   PLATFORM_GUID                  = 0eb07ab9-53d4-45c0-90b3-ddbd17efc885
-  PLATFORM_VERSION               = 1.02
+  PLATFORM_VERSION               = 0.1
   DSC_SPECIFICATION              = 0x00010006
   OUTPUT_DIRECTORY               = Build/SelfPkg
   SUPPORTED_ARCHITECTURES        = IA32|X64|EBC|ARM|AARCH64|RISCV64|LOONGARCH64

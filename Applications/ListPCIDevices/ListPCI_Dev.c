@@ -263,6 +263,7 @@ int main(IN int Argc, IN char *Argv[])
     // ListPCI_Devices_Bridge();
 
     UINT32 Bus, Device, Function, Offset, Data;
+    UINT32 ECAM_BASE = 0xB0000000;
 
     switch (Argc)
     {
@@ -331,11 +332,16 @@ int main(IN int Argc, IN char *Argv[])
             sscanf(Argv[4], "%x", &Offset);
             if ((Bus <= 0xff) && (Device <= 0x1f) && (Function <= 7) && (Offset <= 0xfff))
             {   
+                printf("ECAM = 0x%X + 0x%X = 0x%X\n", 
+                        ECAM_BASE, 
+                        PCI_ECAM_ADDRESS((UINT8)Bus, (UINT8)Device, (UINT8)Function, (UINT16)Offset), 
+                        ECAM_BASE + PCI_ECAM_ADDRESS((UINT8)Bus, (UINT8)Device, (UINT8)Function, (UINT16)Offset)
+                        );
                 Print (L"Bus: %X Device: %X Function: %X Offset: 0x%X\n", Bus, Device, Function, Offset);
                 Print (L"Data(8-bit): ");
-                UINT32 Data8 = GetRegistValue8((UINT8)Bus, (UINT8)Device, (UINT8)Function, (UINT16)Offset);
-                // UINT32 Data8 = MmioRead8(0x80000000 + PCI_ECAM_ADDRESS((UINT8)Bus, (UINT8)Device, (UINT8)Function, (UINT16)Offset));
-                printf("0x%02X\n",Data8);
+                UINT32 IO_Data8 = GetRegistValue8((UINT8)Bus, (UINT8)Device, (UINT8)Function, (UINT16)Offset);
+                UINT32 MMIO_Data8 = MmioRead8(ECAM_BASE + PCI_ECAM_ADDRESS((UINT8)Bus, (UINT8)Device, (UINT8)Function, (UINT16)Offset));
+                printf("IO_Data8 = 0x%02X\tMMIO_Data8 = 0x%02X\n",IO_Data8, MMIO_Data8);
             }
             break;
     default:

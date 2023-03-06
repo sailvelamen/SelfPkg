@@ -1,12 +1,6 @@
 /** @file
   This is Sample of UEFI aplication. 
 **/
-/**
- * 《UEFI编程实践》随书代码
- * 更多的UEFI探索，可以参考笔者的博客和专栏：
- * CSDN: https://blog.csdn.net/luobing4365
- * 知乎: https://www.zhihu.com/column/c_1233025362843209728
- * **/
 #include  <Uefi.h>
 #include  <Library/UefiLib.h>
 #include  <Library/ShellCEntryLib.h>

@@ -112,7 +112,7 @@
   SelfPkg/Drivers/MyProtocol/MyProtocol.inf
   SelfPkg/Universal/DriverSampleDxe/DriverSampleDxe.inf
   SelfPkg/Universal/SwSmiDemo/SwSmiDemo.inf
-  SelfPkg/Universal/PpiSampleDemo/PpiSampleDemo.inf
+  SelfPkg/Universal/PpiHobDemo/PpiHobDemo.inf
 #### Application Library.
   SelfPkg/Applications/MyLibApp/MyLibApp.inf
 

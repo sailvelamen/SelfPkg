@@ -16,6 +16,13 @@ UEFIDriverDxeEntryPoint (
   SystemTable->RuntimeServices->GetTime(&curTime,NULL);
   DEBUG ((DEBUG_ERROR, "Current Time: %d-%d-%d %02d:%02d:%02d\n",
           curTime.Year, curTime.Month, curTime.Day, curTime.Hour, curTime.Minute, curTime.Second));
+
+  DEBUG ((DEBUG_ERROR, "fanjixxxxxxxxxxxGetHobxxxxxxxxxxxstart\n"));
+  extern EFI_GUID  gEfiSelfHobGuid;
+  UINT8  *GuidHob = GetFirstGuidHob (&gEfiSelfHobGuid);
+  ASSERT (GuidHob != NULL);
+  DEBUG ((DEBUG_ERROR, "fanjixxxxxxxxxxxGetHobxxxxxxxxxxxxxend\n"));
+
   DEBUG ((DEBUG_ERROR, "fanjixxxxxxxxxxxUEFIDriverDxeEntryPointxxxxxxxxxxxxEnd\n"));
   return EFI_SUCCESS;
 }

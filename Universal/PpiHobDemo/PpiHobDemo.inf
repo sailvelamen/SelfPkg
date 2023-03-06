@@ -1,6 +1,6 @@
 [Defines]
   INF_VERSION                    = 0x00010005
-  BASE_NAME                      = PpiSampleDemo
+  BASE_NAME                      = PpiHobDemo
   FILE_GUID                      = DD2BCD99-2DF2-CB91-57C3-97228ABD4AC4
   MODULE_TYPE                    = PEIM
   VERSION_STRING                 = 1.0
@@ -14,8 +14,9 @@
 #
 
 [Sources]
-  PpiSampleDemo.h
-  PpiSampleDemo.c
+  PpiHobDemo.h
+  PpiHobDemo.c
+  MyHob.h
 
 [Packages]
   MdePkg/MdePkg.dec
@@ -26,6 +27,9 @@
   PeiServicesLib  
   DebugLib
   # PeiServicesTablePointerLib
+
+[Guids]
+  gEfiSelfHobGuid
 
 [Depex]
   TRUE

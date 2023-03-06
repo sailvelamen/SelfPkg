@@ -1,9 +1,21 @@
-#include "PpiSampleDemo.h"
+#include "PpiHobDemo.h"
 
 EFI_STATUS EFIAPI SelfTestFunction (VOID)
 {
-  DEBUG((DEBUG_INFO,"fanjix:SelfTestFunction Enter\n"));
-  DEBUG((DEBUG_INFO,"fanjix:SelfTestFunction End\n"));
+  DEBUG((DEBUG_INFO,"fanjix: SelfTestFunction Enter\n"));
+
+  DEBUG((DEBUG_INFO,"fanjix: Creat EFI_SELF_HOB Start\n"));
+  EFI_SELF_HOB  MySelfHob;
+  MySelfHob.Type = 0x01;
+  MySelfHob.Signature = &gEfiSelfHobGuid;
+  MySelfHob.Mesg = L"MySelfHob";
+  DEBUG ((DEBUG_INFO, "MySelfHob.Type = %d\n", MySelfHob.Type));
+  DEBUG ((DEBUG_INFO, "MySelfHob.Guid = %g\n", *MySelfHob.Signature));
+  DEBUG ((DEBUG_INFO, "MySelfHob.Mesg = %s\n", MySelfHob.Mesg));
+  BuildGuidDataHob (&gEfiSelfHobGuid, &MySelfHob, sizeof (MySelfHob));
+  DEBUG((DEBUG_INFO,"fanjix: Creat EFI_SELF_HOB Start End\n"));
+
+  DEBUG((DEBUG_INFO,"fanjix: SelfTestFunction End\n"));
   return EFI_SUCCESS;
 }
 

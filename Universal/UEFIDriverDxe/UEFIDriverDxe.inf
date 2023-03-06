@@ -17,12 +17,15 @@
 
 [Packages]
   MdePkg/MdePkg.dec
+  SelfPkg/SelfPkg.dec
 
 [LibraryClasses]
   BaseLib
   UefiLib
   UefiDriverEntryPoint
 
+[Guids]
+  gEfiSelfHobGuid
 
 [Depex]
   TRUE

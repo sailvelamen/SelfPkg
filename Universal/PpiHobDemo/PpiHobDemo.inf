@@ -16,7 +16,6 @@
 [Sources]
   PpiHobDemo.h
   PpiHobDemo.c
-  MyHob.h
 
 [Packages]
   MdePkg/MdePkg.dec

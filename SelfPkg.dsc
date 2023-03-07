@@ -91,6 +91,9 @@
 [LibraryClasses.common.DXE_SMM_DRIVER]
   SmmServicesTableLib|MdePkg/Library/SmmServicesTableLib/SmmServicesTableLib.inf
 
+[LibraryClasses.common.DXE_DRIVER]
+  HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
+
 [LibraryClasses.common.UEFI_DRIVER, LibraryClasses.common.UEFI_APPLICATION]
   PcdLib|MdePkg/Library/DxePcdLib/DxePcdLib.inf
 
@@ -113,6 +116,7 @@
   SelfPkg/Universal/DriverSampleDxe/DriverSampleDxe.inf
   SelfPkg/Universal/SwSmiDemo/SwSmiDemo.inf
   SelfPkg/Universal/PpiHobDemo/PpiHobDemo.inf
+  SelfPkg/Universal/UEFIDriverDxe/UEFIDriverDxe.inf
 #### Application Library.
   SelfPkg/Applications/MyLibApp/MyLibApp.inf
 

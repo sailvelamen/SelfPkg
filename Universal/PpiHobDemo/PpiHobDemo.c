@@ -2,20 +2,18 @@
 
 EFI_STATUS EFIAPI SelfTestFunction (VOID)
 {
-  DEBUG((DEBUG_INFO,"fanjix: SelfTestFunction Enter\n"));
+  DEBUG ((DEBUG_INFO, "fanjix: SelfTestFunction Enter\n"));
 
-  DEBUG((DEBUG_INFO,"fanjix: Creat EFI_SELF_HOB Start\n"));
+  DEBUG ((DEBUG_INFO, "fanjix: Creat EFI_SELF_HOB Start\n"));
   EFI_SELF_HOB  MySelfHob;
-  MySelfHob.Type = 0x01;
-  MySelfHob.Signature = &gEfiSelfHobGuid;
-  MySelfHob.Mesg = L"MySelfHob";
-  DEBUG ((DEBUG_INFO, "MySelfHob.Type = %d\n", MySelfHob.Type));
-  DEBUG ((DEBUG_INFO, "MySelfHob.Guid = %g\n", *MySelfHob.Signature));
-  DEBUG ((DEBUG_INFO, "MySelfHob.Mesg = %s\n", MySelfHob.Mesg));
+  MySelfHob.Type = 0x02;
+  MySelfHob.ID   = 0x135246;
+  DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.Type = %d\n", MySelfHob.Type));
+  DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.ID = 0x%X\n", MySelfHob.ID));
   BuildGuidDataHob (&gEfiSelfHobGuid, &MySelfHob, sizeof (MySelfHob));
-  DEBUG((DEBUG_INFO,"fanjix: Creat EFI_SELF_HOB Start End\n"));
+  DEBUG ((DEBUG_INFO, "fanjix: Creat EFI_SELF_HOB Start End\n"));
 
-  DEBUG((DEBUG_INFO,"fanjix: SelfTestFunction End\n"));
+  DEBUG ((DEBUG_INFO, "fanjix: SelfTestFunction End\n"));
   return EFI_SUCCESS;
 }
 
@@ -36,12 +34,11 @@ PeimInitEntryPoint (
   IN CONST EFI_PEI_SERVICES  **PeiServices
   )
 {
-  DEBUG((DEBUG_INFO,"fanjix:PeimInitEntryPoint Enter\n")); 
+  DEBUG ((DEBUG_INFO, "\nfanjix: PeimInitEntryPoint Enter\n")); 
 
   EFI_STATUS  Status;
   Status = PeiServicesInstallPpi (&mPeiSelfInitPpi);
-  DEBUG((DEBUG_INFO,"PeiServicesInstallPpi: %r\n", Status));
-
+  DEBUG ((DEBUG_INFO, "fanjix: PeiServicesInstallPpi: %r\n", Status));
   SELF_TEST_INIT_PPI *SelfTestPpi;
   Status = PeiServicesLocatePpi (
             &gSelfTestInitFunctionPpiGuid,
@@ -49,10 +46,10 @@ PeimInitEntryPoint (
             NULL,
             (VOID **)&SelfTestPpi
             );
-  DEBUG ((DEBUG_INFO, "PeiServicesLocatePpi: %r\n", Status));
+  DEBUG ((DEBUG_INFO, "fanjix: PeiServicesLocatePpi: %r\n", Status));
   Status = SelfTestPpi->Self_Test();
-  DEBUG ((DEBUG_INFO, "Self_Test: %r\n", Status));
+  DEBUG ((DEBUG_INFO, "fanjix: Self_Test: %r\n", Status));
 
-  DEBUG((DEBUG_INFO,"fanjix:PeimInitEntryPoint End\n")); 
+  DEBUG ((DEBUG_INFO, "fanjix: PeimInitEntryPoint End\n\n")); 
   return Status;
 }

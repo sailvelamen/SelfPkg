@@ -23,6 +23,7 @@
   BaseLib
   UefiLib
   UefiDriverEntryPoint
+  HobLib
 
 [Guids]
   gEfiSelfHobGuid

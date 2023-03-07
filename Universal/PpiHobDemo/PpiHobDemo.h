@@ -3,8 +3,9 @@
 #include <Library/DebugLib.h>
 #include <Library/HobLib.h>
 #include <Library/PeiServicesLib.h>
-//#include <Library/PeiServicesTablePointerLib.h>
-#include "MyHob.h"
+// #include <Library/PeiServicesTablePointerLib.h>
+
+#include <Guid/MyHob.h>
 
 typedef EFI_STATUS (EFIAPI *SELF_TEST_FUNCTION)(VOID);
 

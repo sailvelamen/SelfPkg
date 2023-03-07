@@ -20,7 +20,7 @@ EFI_STATUS EFIAPI SwSmiDemoMain (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-  DEBUG ((DEBUG_INFO, "fanjixxxxxxxxxSwSmiDemoMainxxxxxxxxxEnter\n"));
+  DEBUG ((DEBUG_INFO, "\nfanjixxxxxxxxxSwSmiDemoMainxxxxxxxxxEnter\n"));
 
   EFI_STATUS                     Status;
   EFI_SMM_SW_DISPATCH2_PROTOCOL  *SmmSwDispatch2;
@@ -63,6 +63,6 @@ EFI_STATUS EFIAPI SwSmiDemoMain (
                                   &SmmSwDispatchContext,
                                   &DispatchHandle
                                   );  
-  DEBUG ((DEBUG_INFO, "fanjixxxxxxxxxSwSmiDemoMainxxxxxxxxxEnd\n"));
+  DEBUG ((DEBUG_INFO, "fanjixxxxxxxxxSwSmiDemoMainxxxxxxxxxEnd\n\n"));
   return EFI_SUCCESS;
 }

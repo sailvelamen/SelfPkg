@@ -7,9 +7,9 @@
 
 EFI_GUID  gEfiSelfHobGuid;
 
-typedef struct {
-  UINT32    Type;         
+typedef struct {        
   UINT32    ID;
+  CHAR16    *Mesg;
 } EFI_SELF_HOB;
 
 #endif

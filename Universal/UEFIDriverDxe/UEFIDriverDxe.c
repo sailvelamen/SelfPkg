@@ -2,7 +2,7 @@
 #include <Library/UefiLib.h>
 #include <Library/DebugLib.h>
 #include <Library/HobLib.h>
-
+#include <Pi/PiHob.h>  // GET_GUID_HOB_DATA
 #include <Guid/MyHob.h>
 
 EFI_STATUS
@@ -23,9 +23,9 @@ UEFIDriverDxeEntryPoint (
   DEBUG ((DEBUG_ERROR, "fanjixxxxxxxxxxxGetHobxxxxxxxxxxxstart\n"));
   UINT8  *GuidHob = GetFirstGuidHob (&gEfiSelfHobGuid);
   ASSERT (GuidHob != NULL);
-  EFI_SELF_HOB *MySelfHob = (EFI_SELF_HOB *)GET_GUID_HOB_DATA (GuidHob);
-  DEBUG ((DEBUG_INFO, "fanjix: MySelfHob->Type = %d\n", MySelfHob->Type));
+  EFI_SELF_HOB *MySelfHob = (EFI_SELF_HOB *)(*(UINTN *)(GET_GUID_HOB_DATA (GuidHob)));
   DEBUG ((DEBUG_INFO, "fanjix: MySelfHob->ID = 0x%X\n", MySelfHob->ID));
+  DEBUG ((DEBUG_INFO, "fanjix: MySelfHob->Mesg = %s\n", MySelfHob->Mesg));
   DEBUG ((DEBUG_ERROR, "fanjixxxxxxxxxxxGetHobxxxxxxxxxxxxxend\n"));
 
   DEBUG ((DEBUG_ERROR, "fanjixxxxxxxxxxxUEFIDriverDxeEntryPointxxxxxxxxxxxxEnd\n\n"));

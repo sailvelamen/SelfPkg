@@ -7,10 +7,14 @@ EFI_STATUS EFIAPI SelfTestFunction (VOID)
   DEBUG ((DEBUG_INFO, "fanjix: Creat EFI_SELF_HOB Start\n"));
   EFI_SELF_HOB  MySelfHob;
   MySelfHob.ID   = 0x135246;
-  MySelfHob.Mesg = L"MySelfHob.Mesg";
+  MySelfHob.Mesg = L"HelloWorld!";
+  MySelfHob.Type = 12;
   DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.ID = 0x%X\n", MySelfHob.ID));
-  DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.Mesg = %s\n", MySelfHob.Mesg));
+  DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.Type = %d\n", MySelfHob.Type));
+  DEBUG ((DEBUG_INFO, "fanjix: sizeof(MySelfHob) = %d\n", sizeof(MySelfHob)));
   BuildGuidDataHob (&gEfiSelfHobGuid, &MySelfHob, sizeof (MySelfHob));
+  // EFI_SELF_HOB *test = &MySelfHob;
+  // DEBUG ((DEBUG_INFO, "fanjix: test->Mesg = %s\n", test->Mesg));
   DEBUG ((DEBUG_INFO, "fanjix: Creat EFI_SELF_HOB Start End\n"));
 
   DEBUG ((DEBUG_INFO, "fanjix: SelfTestFunction End\n"));

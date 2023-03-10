@@ -12,13 +12,13 @@ EFI_STATUS EFIAPI SelfTestFunction (VOID)
   DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.ID = 0x%X\n", MySelfHob.ID));
   DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.Type = %d\n", MySelfHob.Type));
   DEBUG ((DEBUG_INFO, "fanjix: MySelfHob.Mesg = %s\n", MySelfHob.Mesg));
-  EFI_SELF_HOB *test = BuildGuidDataHob (&gEfiSelfHobGuid, &MySelfHob, sizeof(MySelfHob));
+  EFI_SELF_HOB *test = (EFI_SELF_HOB *)BuildGuidDataHob (&gEfiSelfHobGuid, &MySelfHob, sizeof(MySelfHob));
   DEBUG ((DEBUG_INFO, "fanjix: sizeof (MySelfHob) = %d\n", sizeof (MySelfHob)));
   // DEBUG ((DEBUG_INFO, "fanjix: sizeof (MySelfHob.Mesg) = %d\n", sizeof (MySelfHob.Mesg)));
   // DEBUG ((DEBUG_INFO, "fanjix: sizeof (CHAR16) = %d\n", sizeof (CHAR16)));
   // DEBUG ((DEBUG_INFO, "fanjix: sizeof (CHAR16 *) = %d\n", sizeof (CHAR16 *)));
   // DEBUG ((DEBUG_INFO, "fanjix: StrLen(HelloWorld!) + 1 = %d\n", StrLen(MySelfHob.Mesg) + 1));
-  // DEBUG ((DEBUG_INFO, "fanjix: test->Mesg = %s\n", test->Mesg));
+  DEBUG ((DEBUG_INFO, "fanjix: test->Mesg = %s\n", test->Mesg));
   DEBUG ((DEBUG_INFO, "\nfanjix: Creat EFI_SELF_HOB Start End\n"));
 
   DEBUG ((DEBUG_INFO, "fanjix: SelfTestFunction End\n"));
@@ -44,8 +44,7 @@ PeimInitEntryPoint (
 {
   DEBUG ((DEBUG_INFO, "\nfanjix: PeimInitEntryPoint Enter\n")); 
 
-  EFI_STATUS  Status;
-  Status = PeiServicesInstallPpi (&mPeiSelfInitPpi);
+  EFI_STATUS  Status = PeiServicesInstallPpi (&mPeiSelfInitPpi);
   DEBUG ((DEBUG_INFO, "fanjix: PeiServicesInstallPpi: %r\n", Status));
   SELF_TEST_INIT_PPI *SelfTestPpi;
   Status = PeiServicesLocatePpi (

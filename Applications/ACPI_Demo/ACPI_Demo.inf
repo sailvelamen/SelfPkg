@@ -1,0 +1,30 @@
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = ACPI_Demo
+  FILE_GUID                      = D4E89D8B-7489-DCF5-DF1E-E182F4D99689
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  ACPI_Demo.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+  DebugLib
+  ShellCommandLib
+
+[Guids]
+  gEfiAcpiTableGuid
+  gEfiAcpi10TableGuid
+  gEfiAcpi20TableGuid

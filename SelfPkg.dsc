@@ -75,6 +75,11 @@
   DebugPrintErrorLevelLib|MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf
   SerialPortLib|PcAtChipsetPkg/Library/SerialIoLib/SerialIoLib.inf  #
   IoLib|MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsic.inf  #
+
+  ShellCommandLib|ShellPkg/Library/UefiShellCommandLib/UefiShellCommandLib.inf
+  HandleParsingLib|ShellPkg/Library/UefiHandleParsingLib/UefiHandleParsingLib.inf
+  OrderedCollectionLib|MdePkg/Library/BaseOrderedCollectionRedBlackTreeLib/BaseOrderedCollectionRedBlackTreeLib.inf
+  PeCoffGetEntryPointLib|MdePkg/Library/BasePeCoffGetEntryPointLib/BasePeCoffGetEntryPointLib.inf
   
 # Self Library
   MyLibraryLib|SelfPkg/Library/MyLibrary/MyLibrary.inf
@@ -96,6 +101,7 @@
 
 [LibraryClasses.common.UEFI_DRIVER, LibraryClasses.common.UEFI_APPLICATION]
   PcdLib|MdePkg/Library/DxePcdLib/DxePcdLib.inf
+  DebugLib|MdePkg/Library/UefiDebugLibConOut/UefiDebugLibConOut.inf
 
 [Components]
 #### Uefi Applications.
@@ -108,6 +114,7 @@
   SelfPkg/Applications/MySMBios/MySmBios.inf
   SelfPkg/Applications/TestDemo/TestDemo.inf
   SelfPkg/Applications/PcdTest/PcdTest.inf
+  SelfPkg/Applications/ACPI_Demo/ACPI_Demo.inf
 #### Uefi Drivers.
   SelfPkg/Drivers/UefiMain/UefiMain.inf
   SelfPkg/Drivers/CmosTest/CmosTest.inf

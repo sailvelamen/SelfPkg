@@ -14,11 +14,13 @@
   MdeModulePkg/MdeModulePkg.dec
   ShellPkg/ShellPkg.dec
   StdLib/StdLib.dec
+  SelfPkg/SelfPkg.dec
 
 [LibraryClasses]
   LibC
   LibStdio
   IoLib
+  MyLibraryLib
   
 # [Protocols]
 #   gEfiPciIoProtocolGuid    ## BY_START

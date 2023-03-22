@@ -20,9 +20,11 @@
 
 [Packages]
   MdePkg/MdePkg.dec
-  StdLib/StdLib.dec
 
 [LibraryClasses]
   UefiLib
-  LibC
-  LibStdio
+  DebugLib
+
+[Guids]
+  gEfiAcpiTableGuid
+  gEfiAcpi20TableGuid

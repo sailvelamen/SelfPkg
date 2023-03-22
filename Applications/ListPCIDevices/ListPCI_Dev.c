@@ -9,6 +9,7 @@
 #include <string.h>
 
 #include <Library/IoLib.h>
+#include <Library/MyLibrary.h>
 
 // #include <Protocol/PciIo.h>			    //获取PciIO protocol所需
 // #include <Protocol/PciRootBridgeIo.h>	//获取PciRootBridgeIO protocol所需
@@ -263,7 +264,7 @@ int main(IN int Argc, IN char *Argv[])
     // ListPCI_Devices_Bridge();
 
     UINT32 Bus, Device, Function, Offset, Data;
-    UINT32 ECAM_BASE = 0xB0000000;
+    UINT64 ECAM_BASE = GetBaseEcam();
 
     switch (Argc)
     {

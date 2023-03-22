@@ -19,7 +19,7 @@
   gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintLoops|5
 
 [PcdsPatchableInModule]
-  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x8000004F
+  gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x80000046
   # gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x807B55FF
   # DEBUG_INIT      0x00000001  // Initialization
   # DEBUG_WARN      0x00000002  // Warnings

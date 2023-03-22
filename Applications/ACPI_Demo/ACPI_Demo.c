@@ -95,6 +95,7 @@ VOID DumpACPI(EFI_ACPI_DESCRIPTION_HEADER *Entry)
     }
   }
 }
+
 int main (IN int Argc, IN char **Argv)
 {
   printf("\nHello,this is Entry of main!()\n");

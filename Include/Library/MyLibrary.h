@@ -7,4 +7,6 @@ VOID LibFunction(VOID);
 
 EFI_STATUS PrintGuid (IN EFI_GUID *Guid);
 
+UINT64 GetBaseEcam (VOID);
+
 #endif

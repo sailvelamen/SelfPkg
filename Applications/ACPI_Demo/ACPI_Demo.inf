@@ -11,6 +11,7 @@
 #
 
 [Sources]
+  ACPI_Demo.h
   ACPI_Demo.c
 
 [Packages]

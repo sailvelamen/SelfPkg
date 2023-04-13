@@ -15,7 +15,8 @@ int main (IN int Argc, IN char **Argv)
 
   EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_POINTER * pRsdp10b;
   EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER * pRsdp65 = DumpRSDP65(Guid); 
-
+  if (pRsdp65 == NULL)
+    goto Rsdp10;
   EFI_ACPI_DESCRIPTION_HEADER *XSDT, *RSDT, *Entry;
   if (pRsdp65->RsdtAddress)
     Entry = RSDT = (EFI_ACPI_DESCRIPTION_HEADER *)pRsdp65->RsdtAddress;
@@ -25,9 +26,11 @@ int main (IN int Argc, IN char **Argv)
   DumpACPIHeader (RSDT);
   DumpACPIHeader (XSDT);
   DumpACPI (Entry);
-
   printf("=================================================================================\n");
+  
+  return 0;
 
+Rsdp10:
   EfiGetSystemConfigurationTable ( &gEfiAcpi10TableGuid, (VOID **)&pRsdp10b );
   printf("\nRSD_10b @ 0x%016llX\n", (UINT64)pRsdp10b);
   printf("  Signature: 0x%llX  ", pRsdp10b->Signature);

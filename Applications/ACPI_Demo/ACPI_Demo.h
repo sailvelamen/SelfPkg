@@ -24,7 +24,8 @@ VOID *DumpRSDP65 (IN EFI_GUID *Guid)
   printf("\n---------------------------------------------------------------------------------\n");
   EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER * pRsdp65;
   // Load RSD
-  EfiGetSystemConfigurationTable ( Guid, (VOID **)&pRsdp65 );
+  if (EfiGetSystemConfigurationTable ( Guid, (VOID **)&pRsdp65 ) == EFI_NOT_FOUND)
+    return NULL;
   printf("RSD_65 @ 0x%016llX\n", (UINT64)pRsdp65);
 
   printf("        Signature: 0x%llX  ", pRsdp65->Signature);

@@ -56,8 +56,7 @@ InstallFanxSsdt ( VOID )
                                         &TableKey
                                         );      
       ASSERT_EFI_ERROR (Status);
-      DEBUG ((DEBUG_INFO, "%a %a - End.\n", _DBGMSGID_, __FUNCTION__));
-      return Status;
+      goto Done;
     }
     DEBUG ((DEBUG_INFO, "%a gEfiCallerIdGuid: %g \n", _DBGMSGID_, gEfiCallerIdGuid));
     // DEBUG ((DEBUG_INFO, "%a EFI_SECTION_RAW:  0x%x \n", _DBGMSGID_, EFI_SECTION_RAW));
@@ -75,6 +74,7 @@ InstallFanxSsdt ( VOID )
       ASSERT_EFI_ERROR (Status);
     }
   }
+Done:
   DEBUG ((DEBUG_INFO, "%a %a - End.\n", _DBGMSGID_, __FUNCTION__));
 
   return Status;

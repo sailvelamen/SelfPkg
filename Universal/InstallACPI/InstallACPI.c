@@ -17,6 +17,8 @@
 #include <Protocol/AcpiTable.h>  // EFI_ACPI_TABLE_PROTOCOL
 #include <IndustryStandard/Acpi.h>  //EFI_ACPI_DESCRIPTION_HEADER
 
+#include "Fanx.h"
+
 #define _DBGMSGID_  "[FANXSSDTINSTALL]"
 extern GUID  gEfiCallerIdGuid;
 
@@ -44,7 +46,19 @@ InstallFanxSsdt ( VOID )
                 (VOID **)&Table,
                 &TableSize
                 );
-    ASSERT_EFI_ERROR (Status);
+    if (EFI_ERROR (Status))
+    {
+      DEBUG ((DEBUG_INFO, "%a %a: SSDT loaded...\n", _DBGMSGID_, __FUNCTION__));
+      Status   = mAcpiTableProtocol->InstallAcpiTable (
+                                        mAcpiTableProtocol,
+                                        (VOID **)&FANX_aml,
+                                        FANX_aml_size,
+                                        &TableKey
+                                        );      
+      ASSERT_EFI_ERROR (Status);
+      DEBUG ((DEBUG_INFO, "%a %a - End.\n", _DBGMSGID_, __FUNCTION__));
+      return Status;
+    }
     DEBUG ((DEBUG_INFO, "%a gEfiCallerIdGuid: %g \n", _DBGMSGID_, gEfiCallerIdGuid));
     // DEBUG ((DEBUG_INFO, "%a EFI_SECTION_RAW:  0x%x \n", _DBGMSGID_, EFI_SECTION_RAW));
     if (Table->OemTableId == SIGNATURE_64 ('J', 'i', ',', 'F', 'a', 'n', 'X', ' ')) {

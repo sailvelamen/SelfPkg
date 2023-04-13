@@ -15,6 +15,7 @@
 [Sources]
   InstallACPI.c
   Fanx.asl
+  Fanx.h
 
 [Packages]
   MdePkg/MdePkg.dec

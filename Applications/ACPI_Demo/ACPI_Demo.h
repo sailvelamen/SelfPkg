@@ -16,7 +16,7 @@
 VOID PrintSignature (UINT64 Signature, UINT8 Length)
 {
   for (UINT8 i = 0; i < Length; i++)
-    ( printf("%c", Signature & 0xFF), Signature >>= 8 );  //逗号运算符
+    ( printf("%c", Signature & 0xFF), Signature >>= 8 );
 }
 
 VOID *DumpRSDP65 (IN EFI_GUID *Guid)
@@ -105,12 +105,12 @@ VOID DumpACPI(EFI_ACPI_DESCRIPTION_HEADER *Entry)
   UINT32 *pEntry32;    
   UINT64 *pEntry64;
   if (AdrLength == sizeof(UINT64)) 
-    pEntry64 = (UINT64 *)++Entry;  // 获取第一个Entry的地址
+    pEntry64 = (UINT64 *)++Entry;  // get first Entry address
   else
     pEntry32 = (UINT32 *)++Entry;
   while (EntryCount--) {
     if (AdrLength == sizeof(UINT64)) {
-      Entry = (EFI_ACPI_DESCRIPTION_HEADER *)(*pEntry64++);  // 获取第一个Entry中存的地址
+      Entry = (EFI_ACPI_DESCRIPTION_HEADER *)(*pEntry64++);  // get first Entry address
       DumpACPIHeader (Entry);
       if (Entry->Signature == EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE)
         DumpDSDT (Entry);

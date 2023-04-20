@@ -29,7 +29,7 @@ CmosRead8 (
   )
 {
   UINT8 flag = IoRead8(0x70);
-  flag = flag & 0x80;  // 保留70端口的bit7
+  flag = flag & 0x80;  // save 70 port bit7
   Index = Index & 0x7F;
   Index = Index | flag;
   

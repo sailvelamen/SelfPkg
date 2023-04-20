@@ -102,12 +102,12 @@ UINT64 GetBaseEcam (VOID)
   UINT32 *pEntry32;    
   UINT64 *pEntry64;
   if (AdrLength == sizeof(UINT64)) 
-    pEntry64 = (UINT64 *)++Entry;  // 获取第一个Entry的地址
+    pEntry64 = (UINT64 *)++Entry;  // get first Entry address
   else
     pEntry32 = (UINT32 *)++Entry;
   while (EntryCount--) {
     if (AdrLength == sizeof(UINT64)) {
-      Entry = (EFI_ACPI_DESCRIPTION_HEADER *)(*pEntry64++);  // 获取第一个Entry中存的地址
+      Entry = (EFI_ACPI_DESCRIPTION_HEADER *)(*pEntry64++);  // get first Entry address
       // if (Entry->Signature == 0x4746434D)
       if (Entry->Signature == EFI_ACPI_6_5_PCI_EXPRESS_MEMORY_MAPPED_CONFIGURATION_SPACE_BASE_ADDRESS_DESCRIPTION_TABLE_SIGNATURE)
         MmCfgHdr = (EFI_ACPI_MEMORY_MAPPED_CONFIGURATION_BASE_ADDRESS_TABLE_HEADER *)&Entry->Signature;

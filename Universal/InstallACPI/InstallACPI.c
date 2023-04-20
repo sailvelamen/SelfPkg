@@ -40,7 +40,7 @@ InstallFanxSsdt ( VOID )
     // Discover the SSDT
     //
     Status =  GetSectionFromFv (
-                &gEfiCallerIdGuid, // 当前drive的GUID,就是在.inf文件的FILE_GUID
+                &gEfiCallerIdGuid, // In .inf file's FILE_GUID
                 EFI_SECTION_RAW,
                 SectionInstance,
                 (VOID **)&Table,

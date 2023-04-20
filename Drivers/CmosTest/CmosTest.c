@@ -14,8 +14,8 @@ CmosTestEntryPoint (
   EFI_TIME curTime;
   Print(L"Hello,this is Entry of UefiMain!(test)\n");
 
-  //使用BootService和RuntimeService
-  SystemTable->BootServices->Stall(2000);  //延时2秒
+  // BootService and RuntimeService
+  SystemTable->BootServices->Stall(2000);  // delay 2s
   SystemTable->RuntimeServices->GetTime(&curTime,NULL);
   Print(L"Current Time: %d-%d-%d %02d:%02d:%02d\n",curTime.Year,curTime.Month,curTime.Day,curTime.Hour,curTime.Minute,curTime.Second);
   //使用SystemTable

@@ -34,7 +34,7 @@ VOID PrintDataBuffer(UINT8 *DataBuffer, UINTN DataBufferSize);
 int main(IN int Argc, IN char **Argv)
 {   
     UINTN NameBufferSize = INIT_NAME_BUFFER_SIZE;
-    // 变量名分配内存，初始化为0
+    // Allocate memory for FoundVarName, initialize to 0
     CHAR16 *FoundVarName = AllocateZeroPool(NameBufferSize);
     if (FoundVarName == NULL)
     {
@@ -44,7 +44,7 @@ int main(IN int Argc, IN char **Argv)
     UINTN DataBufferSize = INIT_DATA_BUFFER_SIZE;
     UINT8 *DataBuffer = AllocatePool(DataBufferSize);
     if(DataBuffer == NULL)
-    {// DataBuffer == NULL 说明没有分配成功需要释放FoundVarName
+    {// DataBuffer == NULL FoundVarName needs to be released due to unsuccessful allocation
         printf("DataBuffer == NULL\n");
         FreePool(FoundVarName);
         return (EFI_OUT_OF_RESOURCES);

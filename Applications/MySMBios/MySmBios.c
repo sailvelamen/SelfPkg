@@ -210,7 +210,7 @@ int main(IN int Argc, IN char **Argv)
 
     EFI_STATUS Status;
 
-    // 获取ESP Table
+    // get ESP Table
     Status = EfiGetSystemConfigurationTable (&gEfiSmbiosTableGuid, (VOID **)&SmbiosTable); 
     if ((Status != EFI_SUCCESS) || (SmbiosTable == NULL) || (CompareMem (SmbiosTable->AnchorString, "_SM_", 4) != 0))
     {
@@ -225,10 +225,10 @@ int main(IN int Argc, IN char **Argv)
     {
         case 1:
             DisplayESPInfo(SmbiosTable);
-            // 获取起始地址
+            // Get Start Address
             mSmbiosStruct->Raw = (UINT8 *)(UINTN)(SmbiosTable->TableAddress);
             SmBiosStruct.Raw = mSmbiosStruct->Raw;
-            // 遍历SmBios
+            // Traverse SmBios
             EnumSmbiosTable(&SmBiosStruct, SmbiosTable->NumberOfSmbiosStructures, Type, flag);
             break;
         case 3:
@@ -237,10 +237,10 @@ int main(IN int Argc, IN char **Argv)
                 flag = TRUE;
                 sscanf(Argv[2], "%d", &Type);
                 DisplayESPInfo(SmbiosTable);
-                // 获取起始地址
+                // Get Start Address
                 mSmbiosStruct->Raw = (UINT8 *)(UINTN)(SmbiosTable->TableAddress);
                 SmBiosStruct.Raw = mSmbiosStruct->Raw;
-                // 遍历SmBios
+                // Traverse SmBios
                 EnumSmbiosTable(&SmBiosStruct, SmbiosTable->NumberOfSmbiosStructures, Type, flag);
             }
     }

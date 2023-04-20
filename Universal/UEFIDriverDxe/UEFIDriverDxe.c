@@ -14,8 +14,8 @@ UEFIDriverDxeEntryPoint (
 {
   DEBUG ((DEBUG_ERROR, "\nfanjixxxxxxxxxxxUEFIDriverDxeEntryPointxxxxxxxxxxxxEntry\n"));
   EFI_TIME curTime;
-  //使用BootService和RuntimeService
-  SystemTable->BootServices->Stall(2000);  //延时2秒
+  // BootService and RuntimeService
+  SystemTable->BootServices->Stall(2000);  //delay 2s
   SystemTable->RuntimeServices->GetTime(&curTime,NULL);
   DEBUG ((DEBUG_ERROR, "fanjix: Current Time: %d-%d-%d %02d:%02d:%02d\n",
           curTime.Year, curTime.Month, curTime.Day, curTime.Hour, curTime.Minute, curTime.Second));

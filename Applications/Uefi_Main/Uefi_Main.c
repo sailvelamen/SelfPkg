@@ -26,14 +26,14 @@ Uefi_Main (
   EFI_TIME curTime;
   Print(L"Hello,this is Entry of UefiMain!(Applications)\n");
 
-  //使用BootService和RuntimeService
-  SystemTable->BootServices->Stall(2000);  //延时2秒
+  // BootService and RuntimeService
+  SystemTable->BootServices->Stall(2000);  // delay 2s
   SystemTable->RuntimeServices->GetTime(&curTime,NULL);
   Print(L"Current Time: %d-%d-%d %02d:%02d:%02d\n",curTime.Year,curTime.Month,curTime.Day,curTime.Hour,curTime.Minute,curTime.Second);
   DEBUG ((DEBUG_INFO,    "fanjixxxxxxxxxxxDEBUG_INFOxxxxxxxxxxxxx\n"));
   DEBUG ((DEBUG_VERBOSE, "fanjixxxxxxxxxxxDEBUG_VERBOSExxxxxxxxxx\n"));
   DEBUG ((DEBUG_ERROR,   "fanjixxxxxxxxxxxDEBUG_ERRORxxxxxxxxxxxx\n"));
-  //使用SystemTable
+  // SystemTable
   SystemTable->ConOut->OutputString(SystemTable->ConOut,L"Test SystemTable...\n\r");
   Print(L"\rrxxxxxxxxxxxxxxxxxxxxxxxxxxxxxn\n");
   Print(L"xxxxxxxxxxxxxxxn\nxxxxxxxxxxxxxxn\n");

@@ -15,13 +15,10 @@ int main(IN int Argc, IN char **Argv)
   EFI_TIME curTime;
   printf("Hello,this is Entry of main!(test)\n");
 
-  //使用BootService和RuntimeService
-  // gST->BootServices->Stall(2000);  //延时2秒
-  gBS->Stall(2000);
+  gBS->Stall(2000);  // delay 2s
   // gST->RuntimeServices->GetTime(&curTime,NULL);
   gRT->GetTime(&curTime, NULL);
   printf("Current Time: %d-%d-%d %02d:%02d:%02d\n", curTime.Year, curTime.Month, curTime.Day, curTime.Hour, curTime.Minute, curTime.Second);
-  //使用SystemTable
   gST->ConOut->OutputString(gST->ConOut, L"Test SystemTable...\n\r");
 
   UINT8 second = 0;  // 0x00

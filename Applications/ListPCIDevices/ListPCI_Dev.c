@@ -11,8 +11,8 @@
 #include <Library/IoLib.h>
 #include <Library/MyLibrary.h>
 
-// #include <Protocol/PciIo.h>			    //获取PciIO protocol所需
-// #include <Protocol/PciRootBridgeIo.h>	//获取PciRootBridgeIO protocol所需
+// #include <Protocol/PciIo.h>			    // get PciIO protocol
+// #include <Protocol/PciRootBridgeIo.h>	// get PciRootBridgeIO protocol
 // #include <IndustryStandard/Pci.h>       // PCI_TYPE00
 
 // EFI_PCI_ROOT_BRIDGE_IO_PROTOCOL   *gPCIRootBridgeIO;
@@ -68,7 +68,7 @@
 //     EFI_STATUS Status;
 //     EFI_HANDLE *PciHandleBuffer;
 //     UINTN      HandleCount = 0;
-//     // 获取Handle
+//     // get Handle
 //     Status = gBS->LocateHandleBuffer(
 //         ByProtocol,
 //         &gEfiPciRootBridgeIoProtocolGuid,
@@ -79,7 +79,7 @@
 //     if (EFI_ERROR(Status))
 //         return Status;
 //     printf("Find PCI Root Bridge: %d\n", HandleCount);
-//     // 获取Protocol实例
+//     // get Protocol Instance
 //     for (UINTN HandleIndex = 0; HandleIndex < HandleCount; HandleIndex++)
 //     {
 //         Status = gBS->HandleProtocol(
@@ -103,9 +103,9 @@
 //     for (UINT8 i = 0; i < PCI_MAX_BUS; i++)
 //         for (UINT8 j = 0; j < PCI_MAX_DEVICE; j++)
 //             for (UINT8 k = 0; k < PCI_MAX_FUNC; k++)
-//             {   // 判断设备是否存在
+//             {   // Determine if the device exists
 //                 Status = PciDevicePresent (gPCIRootBridgeIO, &Pci, i , j, k);
-//                 if (Status == EFI_SUCCESS)  // 设备存在
+//                 if (Status == EFI_SUCCESS)  // Device present
 //                 {
 //                     ++count;
 //                     Print(L"%02d %03d %02d %d :",count,i,j,k);
@@ -125,13 +125,13 @@ UINT32 SetIOAddress (UINT8 Bus, UINT8 Device, UINT8 Function, UINT16 Offset)
 {
     return (0x80000000 | (((Bus) & 0xff) << 16) | (((Device) & 0x1f) << 11) | (((Function) & 0x07) << 8) | Offset);
 }
-// 一次读32位
+// Read 32-bit at once
 UINT32 GetRegistValue32(UINT8 Bus, UINT8 Device, UINT8 Function, UINT16 Offset)
 {
     IoWrite32 (PCI_CONFIGURATION_ADDRESS_PORT, SetIOAddress (Bus, Device, Function, Offset));
     return IoRead32 (PCI_CONFIGURATION_DATA_PORT);    
 }
-// 一次读8位
+// Read 8-bit at once
 UINT8 GetRegistValue8(UINT8 Bus, UINT8 Device, UINT8 Function, UINT16 Offset)
 {
     UINT32 Data = GetRegistValue32(Bus, Device, Function, (Offset & 0xFC));
@@ -278,7 +278,7 @@ int main(IN int Argc, IN char *Argv[])
                     for (Function = 0; Function < 8; Function++)
                     {
                         // Data = GetRegistValue32((UINT8)Bus, (UINT8)Device, (UINT8)Function, 0x00);
-                        // // 判断设备是否存在
+                        // // Determine if the device exists
                         // if (Data == 0xFFFFFFFF)
                         //     continue; 
                         if (GetRegistValue32((UINT8)Bus, (UINT8)Device, (UINT8)Function, 0x00) == 0xFFFFFFFF)
@@ -294,14 +294,12 @@ int main(IN int Argc, IN char *Argv[])
                         printf(" Prog Interface %X\n", ((Data & 0x0000FF00) >> 8));
                         ASPMSupport((UINT8)Bus, (UINT8)Device, (UINT8)Function);
                     } // End Function
-                    // if (Device == 31)    break;
                 } // End Device
-                // if (Bus == 255)    break;
             } // End Bus
             break;
 
         case 4:
-            // char 转 十六进制 int
+            // Convert char to hexadecimal int
             sscanf(Argv[1], "%x", &Bus);
             sscanf(Argv[2], "%x", &Device);
             sscanf(Argv[3], "%x", &Function);
@@ -326,7 +324,7 @@ int main(IN int Argc, IN char *Argv[])
             break;
 
         case 5:
-            // char 转 int
+            // Convert char to int
             sscanf(Argv[1], "%x", &Bus);
             sscanf(Argv[2], "%x", &Device);
             sscanf(Argv[3], "%x", &Function);

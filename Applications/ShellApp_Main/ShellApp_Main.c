@@ -18,8 +18,8 @@
 INTN
 EFIAPI
 ShellAppMain (
-  IN UINTN Argc,    // 参数的数量
-  IN CHAR16 **Argv  // 参数数组
+  IN UINTN Argc,    // Number of parameters
+  IN CHAR16 **Argv  // parameter array
   )
 {
   EFI_TIME curTime;
@@ -32,14 +32,14 @@ ShellAppMain (
   }
   
 
-  //使用BootService和RuntimeService
-  // gST->BootServices->Stall(2000);  //延时2秒
+  // BootService and RuntimeService
+  // gST->BootServices->Stall(2000);  // delay 2s
   gBS->Stall(2000);
   // gST->RuntimeServices->GetTime(&curTime,NULL);
   gRT->GetTime(&curTime,NULL);
   Print(L"Current Time: %d-%d-%d %02d:%02d:%02d\n",curTime.Year,curTime.Month,curTime.Day,curTime.Hour,curTime.Minute,curTime.Second);
 
-  //使用SystemTable
+  // SystemTable
   gST->ConOut->OutputString(gST->ConOut,L"Test SystemTable...\n\r");
 
   return(0);

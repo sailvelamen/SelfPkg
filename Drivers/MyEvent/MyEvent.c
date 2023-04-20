@@ -36,7 +36,7 @@ MyEventEntryPoint (
   return EFI_SUCCESS;
 }
 
-// Notification函数
+// Notification function
 VOID myNotifyTest(IN EFI_EVENT Event, IN VOID *Context)
 {
     EFI_STATUS   Status = 0;
@@ -49,7 +49,7 @@ VOID myNotifyTest(IN EFI_EVENT Event, IN VOID *Context)
     if (Status == EFI_SUCCESS)
       gBS->SignalEvent(Event); 
 }
-// 生成事件
+// creat event
 EFI_STATUS myTestEvent()
 {
   EFI_STATUS Status;
@@ -78,28 +78,28 @@ EFI_STATUS  testMouseSimple()
     EFI_SIMPLE_POINTER_PROTOCOL* mouse = 0;
     EFI_SIMPLE_POINTER_STATE     State;
     EFI_EVENT events[2]; // = {0, gST->ConIn->WaitForKey};
-    //显示光标
+    // Show Cursor
     gST->ConOut->EnableCursor (gST->ConOut, TRUE);
-    //找出鼠标设备
+    // find mouse devices
     Status = gBS->LocateProtocol(
             &gEfiSimplePointerProtocolGuid,
             NULL,
             (VOID**)&mouse
             );
-    // 重置鼠标设备
+    // reset mouse devices
     Status = mouse->Reset(mouse, TRUE);
-    // 将鼠标事件放到等待事件数组
+    // put mouse event in events
     events[0] = mouse->WaitForInput;
-    // 将键盘事件放到等待数组
+    // put keyboard event in events
     events[1] = gST->ConIn->WaitForKey;
     while(1)
     {
         EFI_INPUT_KEY	   Key;
         UINTN index;
-        // 等待events中的任一事件发生
+        // Wait for any event in the events to occur
         Status = gBS->WaitForEvent(2, events, &index);
         if(index == 0){
-            // 获取鼠标状态并输出
+            // get mouse state and output
             Status = mouse->GetState(mouse, &State);
             Print(L"X:%d Y:%d Z:%d L:%d R:%d\n",
                 State.RelativeMovementX,
@@ -110,7 +110,7 @@ EFI_STATUS  testMouseSimple()
                 );
         } else{            
             Status = gST->ConIn->ReadKeyStroke (gST->ConIn, &Key);
-            // 按’q’键退出
+            // enter 'q' to quit
             if (Key.UnicodeChar == 'q')
                 break;
         }
@@ -156,7 +156,7 @@ EFI_STATUS  testMouseSimple()
 //   EFI_EVENT myEvent;
 //   // UINTN index = 0;
 //   Print(L"Test EVT_TIMER | EVT_NOTIFY_SIGNAL\n");
-//   // 生成EVT_TIMER事件
+//   // creat EVT_TIMER event
 //   // Status = gBS->CreateEvent(EVT_TIMER, TPL_CALLBACK, (EFI_EVENT_NOTIFY)NULL, (VOID *)NULL, &myEvent);
 //   // Status = gBS->CreateEvent(EVT_TIMER | EVT_NOTIFY_SIGNAL, TPL_CALLBACK, (EFI_EVENT_NOTIFY)myEventNoify, (VOID *)NULL, &myEvent);
 //   Status = gBS->CreateEvent(
@@ -166,10 +166,10 @@ EFI_STATUS  testMouseSimple()
 //                   (VOID *)L"Hello, Time Out!", 
 //                   &myEvent
 //                   );
-//   // 设置定时器属性
+//   // Set Timer Properties
 //   Status = gBS->SetTimer(myEvent, TimerPeriodic, 10*1000*1000);
 //   WaitKey();
-//   // while(1)    // 不停的检查事件myEvent的状态
+//   // while(1)    // Continuously checking the status of event myEvent
 //   //   Status = gBS->WaitForEvent(1, &myEvent, &index);
 
 //   gBS->CloseEvent(myEvent);

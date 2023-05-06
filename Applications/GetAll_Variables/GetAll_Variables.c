@@ -56,7 +56,7 @@ int main(IN int Argc, IN char **Argv)
     UINT32 Atts;
 //    BOOLEAN write;
 
-    printf("------------------------------GetAllVariables-----------------------------\n");
+    printf("\n------------------------------GetAllVariables-----------------------------\n");
     EFI_GUID FoundVarGuid;
     while(1)
     {
@@ -102,7 +102,7 @@ int main(IN int Argc, IN char **Argv)
             Status = gRT->GetVariable(FoundVarName, &FoundVarGuid, &Atts, &DataSize, DataBuffer);
         }
         printf(" Attributes:0x%08x  DataSize: 0x%03x  \n", Atts, DataSize);
-        printf("GUID: ");
+        Print (L"GUID:");
         PrintGuid(&FoundVarGuid);
 
         // Status = gRT->SetVariable(FoundVarName, &FoundVarGuid, Atts, DataSize, DataBuffer);
@@ -112,7 +112,7 @@ int main(IN int Argc, IN char **Argv)
     }//End while(1)
 
 
-    printf("------------------------------GetVariable-----------------------------\n");
+    printf("\n------------------------------GetVariable-----------------------------\n");
     FoundVarName = (CHAR16*)L"ConIn";
     EFI_GUID *Guid = &gEfiGlobalVariableGuid;
     Status = gRT->GetVariable(FoundVarName, Guid, &Atts, &DataSize, DataBuffer);
@@ -128,7 +128,6 @@ int main(IN int Argc, IN char **Argv)
             FreePool(OldName);
         }
         CopyMem(FoundVarName, OldName, OldNameBufferSize);
-        FreePool(OldName);
         NameSize = NameBufferSize;
         Status = gRT->GetVariable(FoundVarName, Guid, &Atts, &DataSize, DataBuffer);
     }
@@ -166,7 +165,7 @@ VOID PrintDataBuffer(UINT8 *DataBuffer, UINTN DataBufferSize)
     {
         printf("%02x ",DataBuffer[i]);
         if ((i != 0) && ((i+1) % 16 == 0))
-            printf("\n\t");
+            printf("\n              ");
     }
     printf("\n");
 }

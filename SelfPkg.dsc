@@ -9,7 +9,7 @@
   SKUID_IDENTIFIER               = DEFAULT
 
 [PcdsFeatureFlag.common]
-  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintEnable|FALSE
+  gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintEnable|TRUE
 
 [PcdsFixedAtBuild.common]
   gEfiSelfPkgTokenSpaceGuid.PcdHelloWorldPrintString|L"UEFI Hello World! Intex = %d\n"

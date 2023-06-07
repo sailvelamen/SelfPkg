@@ -65,6 +65,10 @@
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf  #
   HiiLib|MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf
   UefiHiiServicesLib|MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
+  UefiBootManagerLib|MdeModulePkg/Library/UefiBootManagerLib/UefiBootManagerLib.inf
+  PerformanceLib|MdePkg/Library/BasePerformanceLibNull/BasePerformanceLibNull.inf
+  SortLib|MdeModulePkg/Library/UefiSortLib/UefiSortLib.inf
+  VariablePolicyHelperLib|MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib.inf
 
 !if $(TARGET) == RELEASE  #
   DebugLib|MdePkg/Library/BaseDebugLibNull/BaseDebugLibNull.inf
@@ -100,6 +104,8 @@
   PcdLib|MdePkg/Library/DxePcdLib/DxePcdLib.inf
   DebugLib|MdePkg/Library/UefiDebugLibConOut/UefiDebugLibConOut.inf
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
+  DxeServicesTableLib|MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib.inf
+  ReportStatusCodeLib|MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
   HobLib|MdePkg/Library/DxeHobLib/DxeHobLib.inf
 
 [Components]
@@ -124,6 +130,7 @@
   SelfPkg/Universal/PpiHobDemo/PpiHobDemo.inf
   SelfPkg/Universal/UEFIDriverDxe/UEFIDriverDxe.inf
   SelfPkg/Universal/InstallACPI/InstallACPI.inf
+  SelfPkg/Universal/TestUiLib/TestUiLib.inf
 #### Application Library.
   SelfPkg/Applications/MyLibApp/MyLibApp.inf
 

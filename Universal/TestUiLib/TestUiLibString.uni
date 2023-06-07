@@ -1,0 +1,33 @@
+///** @file
+//
+// Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
+// SPDX-License-Identifier: BSD-2-Clause-Patent
+//
+// Module Name:
+//
+//   TestUiLibStrings.uni
+//
+// Abstract:
+//
+//   String definitions for TestUi formset.
+//
+// Revision History:
+//
+// --*/
+
+/=#
+#langdef   en-US "English"
+#langdef   fr-FR "Français"
+
+#string STR_EDKII_MENU_TITLE           #language en-US  "EDKII Menu(Test)"
+                                       #language fr-FR  "EDKII Menu(Test)"
+#string STR_EDKII_MENU_HELP            #language en-US  "This selection will take you to the EDKII Menu(Test)"
+                                       #language fr-FR  "This selection will take you to the EDKII Menu(Test)"
+#string STR_DEVICES_LIST               #language en-US  "Devices List"
+                                       #language fr-FR  "Devices List"
+#string STR_MISSING_STRING             #language en-US  "Missing String"
+                                       #language fr-FR  "Missing String"
+#string STR_EMPTY_STRING               #language en-US  ""
+                                       #language fr-FR  ""
+#string STR_EXIT_STRING                #language en-US  "Press ESC to exit."
+                                       #language fr-FR  "Press ESC to exit."

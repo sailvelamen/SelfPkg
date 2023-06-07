@@ -37,6 +37,7 @@
 #define PERL_GUID \
   { 0x63E60A51, 0x497D, 0xD427, {0xC4, 0xA5, 0xB8, 0xAB, 0xDC, 0x3A, 0xAE, 0xB6 }}
 
+#define TEST_MANAGER_FORMSET_GUID  {0xa9dd1a1c, 0xa671, 0x9753, {0x3e, 0xa9, 0x90, 0xfa, 0x1d, 0xa7, 0x61, 0xa2}}
 //
 // Labels definition
 //
@@ -48,7 +49,7 @@ formset
   guid      = DRIVER_SAMPLE_FORMSET_GUID,
   title     = STRING_TOKEN(STR_FORM_SET_TITLE),
   help      = STRING_TOKEN(STR_FORM_SET_TITLE_HELP),
-  classguid = EFI_HII_PLATFORM_SETUP_FORMSET_GUID,
+  classguid = TEST_MANAGER_FORMSET_GUID,
 
   //
   // Notes: VfrCompiler will insert a Standard Default Storage declaration

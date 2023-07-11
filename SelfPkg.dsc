@@ -131,6 +131,7 @@
   SelfPkg/Universal/UEFIDriverDxe/UEFIDriverDxe.inf
   SelfPkg/Universal/InstallACPI/InstallACPI.inf
   SelfPkg/Universal/TestUiLib/TestUiLib.inf
+  SelfPkg/Universal/BootOptionsDxe/BootOptionsDxe.inf
 #### Application Library.
   SelfPkg/Applications/MyLibApp/MyLibApp.inf
 

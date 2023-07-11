@@ -1,0 +1,39 @@
+///** @file
+//
+// Copyright (c) 2007 - 2018, Intel Corporation. All rights reserved.<BR>
+// SPDX-License-Identifier: BSD-2-Clause-Patent
+//
+// Module Name:
+//
+//   BootOptionsString.uni
+//
+// Abstract:
+//
+//   String definitions for BootOptions formset.
+//
+// Revision History:
+//
+// --*/
+
+/=#
+#langdef   en-US "English"
+#langdef   fr-FR "Français"
+
+#string STR_FORM_BOOT_SETUP_TITLE      #language en-US  "Boot Options"
+                                       #language fr-FR  "Boot Options"
+#string STR_MANAGER_SETUP_TITLE        #language en-US  "Boot Manager"
+                                       #language fr-FR  "Boot Manager"                                       
+#string STR_FORM_BOOT_SETUP_HELP       #language en-US  "Modify system boot options"
+                                       #language fr-FR  "Modify system boot options"
+#string STR_CHANGE_ORDER               #language en-US  "Change the order"
+                                       #language fr-FR  "Change the order"
+#string STR_SAVE_AND_EXIT              #language en-US  "Commit Changes and Exit"
+                                       #language fr-FR  "Commit Changes and Exit"
+#string STR_NO_SAVE_AND_EXIT           #language en-US  "Discard Changes and Exit"
+                                       #language fr-FR  "Discard Changes and Exit"
+#string STR_SPLIT_LINE                 #language en-US  "--------------------------------------------------"
+                                       #language fr-FR  "=================================================="
+#string STR_EMPTY_STRING               #language en-US  ""
+                                       #language fr-FR  ""
+#string STR_EXIT_STRING                #language en-US  "Press ESC to exit."
+                                       #language fr-FR  "Press ESC to exit."

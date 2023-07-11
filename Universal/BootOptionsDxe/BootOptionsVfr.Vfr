@@ -1,0 +1,33 @@
+///** @file
+//
+//  Boot Options formset.
+//
+//  Copyright (c) 2004 - 2015, Intel Corporation. All rights reserved.<BR>
+//  SPDX-License-Identifier: BSD-2-Clause-Patent
+//
+//**/
+
+#include "DataStruct.h"
+
+formset
+  guid      = BOOT_OPTIONS_FORMSET_GUID,
+  title     = STRING_TOKEN(STR_FORM_BOOT_SETUP_TITLE),
+  help      = STRING_TOKEN(STR_FORM_BOOT_SETUP_HELP),
+  classguid = TEST_MANAGER_FORMSET_GUID,
+
+  form formid = DEVICE_MANAGER_FORM_ID,                                          // Form ID
+       title  = STRING_TOKEN(STR_FORM_BOOT_SETUP_TITLE);    // Form title
+
+    subtitle text = STRING_TOKEN(STR_MANAGER_SETUP_TITLE);
+    subtitle text = STRING_TOKEN(STR_SPLIT_LINE);
+    subtitle text = STRING_TOKEN(STR_EMPTY_STRING);
+    
+    label LABEL_DEVICES_LIST;
+    label LABEL_END;
+
+    subtitle text = STRING_TOKEN(STR_EMPTY_STRING);
+    subtitle text = STRING_TOKEN(STR_EMPTY_STRING);
+    subtitle text = STRING_TOKEN(STR_EXIT_STRING);
+  endform;
+
+endformset;

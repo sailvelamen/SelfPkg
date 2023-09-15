@@ -11,7 +11,7 @@ int main (IN int Argc, IN char **Argv)
   Print (L"gEfiAcpi20TableGuid: %g\n", &gEfiAcpi20TableGuid);
   printf("gST->NumberOfTableEntries = %d\n", gST->NumberOfTableEntries);
   for (UINTN Index = 0; Index < gST->NumberOfTableEntries; Index++) 
-    DEBUG ((DEBUG_INFO, "VendorGuid[%d]: %g\n", Index, EfiConfigurationTable[Index].VendorGuid));
+    DEBUG ((DEBUG_INFO, "VendorGuid[%02d]: %g\n", Index, EfiConfigurationTable[Index].VendorGuid));
 
   EFI_ACPI_1_0_ROOT_SYSTEM_DESCRIPTION_POINTER * pRsdp10b;
   EFI_ACPI_6_5_ROOT_SYSTEM_DESCRIPTION_POINTER * pRsdp65 = DumpRSDP65(Guid); 

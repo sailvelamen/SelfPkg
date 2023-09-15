@@ -10,7 +10,7 @@ SelfPkg\Applications # All UEFI_APPLICATION Projects
 
 SelfPkg\Drivers # All UEFI_DRIVER Projects
 
-SelfPkg\Universal # These projects need to be compiled in the platform's DSC file
+SelfPkg\Universal # These projects need to be compiled in the platform's DSC & FDF file
 
 SelfPkg\Library # Self Libraries
 

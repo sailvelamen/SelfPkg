@@ -84,7 +84,8 @@
   HandleParsingLib|ShellPkg/Library/UefiHandleParsingLib/UefiHandleParsingLib.inf
   OrderedCollectionLib|MdePkg/Library/BaseOrderedCollectionRedBlackTreeLib/BaseOrderedCollectionRedBlackTreeLib.inf
   PeCoffGetEntryPointLib|MdePkg/Library/BasePeCoffGetEntryPointLib/BasePeCoffGetEntryPointLib.inf
-  
+  SafeIntLib|MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf
+  BmpSupportLib|MdeModulePkg/Library/BaseBmpSupportLib/BaseBmpSupportLib.inf
 # Self Library
   MyLibraryLib|SelfPkg/Library/MyLibrary/MyLibrary.inf
   MyCMOSLib|SelfPkg/Library/MyCMOSLib/MyCMOSLib.inf
@@ -120,6 +121,8 @@
   SelfPkg/Applications/TestDemo/TestDemo.inf
   SelfPkg/Applications/PcdTest/PcdTest.inf
   SelfPkg/Applications/ACPI_Demo/ACPI_Demo.inf
+  SelfPkg/Applications/ACPI_Demo/DumpBGRT.inf
+#  SelfPkg/Applications/ReplaceLogo/ReplaceLogo.inf
 #### Uefi Drivers.
   SelfPkg/Drivers/UefiMain/UefiMain.inf
   SelfPkg/Drivers/CmosTest/CmosTest.inf

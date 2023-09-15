@@ -10,7 +10,7 @@ SelfPkg\Applications # 都是 UEFI_APPLICATION 项目
 
 SelfPkg\Drivers      # 都是 UEFI_DRIVER 项目
 
-SelfPkg\Universal    # 这些项目需要放入平台的DSC文件中进行编译
+SelfPkg\Universal    # 这些项目需要放入平台的DSC & FDF文件中进行编译
 
 SelfPkg\Library      # 自定义库
 

@@ -1,0 +1,43 @@
+## @file
+#  Sample UEFI Application Reference EDKII Module.
+#
+#  This is a sample shell application that will dump boot logo
+#  and save a BMP image.
+#
+##
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = DumpBGRT
+  FILE_GUID                      = AF7E5893-6E19-DC1E-F954-16B40AAD0A89
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  ACPI_Demo.h
+  DumpBGRT.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+  DebugLib
+  ShellCommandLib
+  BmpSupportLib
+
+[Protocols]
+  gEfiGraphicsOutputProtocolGuid
+
+[Guids]
+  gEfiAcpiTableGuid
+  gEfiAcpi10TableGuid
+  gEfiAcpi20TableGuid

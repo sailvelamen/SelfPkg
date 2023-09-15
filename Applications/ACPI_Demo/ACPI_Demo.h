@@ -41,7 +41,7 @@ VOID *DumpRSDP65 (IN EFI_GUID *Guid)
   printf("    @ 0x%016llX\n", pRsdp65->OemId);
   printf("         Revision: %-18u            @ 0x%016llX\n", pRsdp65->Revision, &pRsdp65->Revision);
   printf("             RSDT: 0x%016llX            @ 0x%016llX\n", pRsdp65->RsdtAddress, &pRsdp65->RsdtAddress);
-  printf("           Length: %-18u            @ 0x%016llX\n", pRsdp65->Length, &pRsdp65->Length);
+  printf("          Length: %-04u or    0x%04x              @ 0x%016llX\n", pRsdp65->Length, pRsdp65->Length, &pRsdp65->Length);
   printf("             XSDT: 0x%016llX            @ 0x%016llX\n", pRsdp65->XsdtAddress, &pRsdp65->XsdtAddress);
   printf(" ExtendedChecksum: 0x%-16X            @ 0x%016llX\n\n", pRsdp65->ExtendedChecksum, &pRsdp65->ExtendedChecksum);
   DumpHex (2, 0, pRsdp65->Length, pRsdp65);   
@@ -57,7 +57,7 @@ VOID DumpACPIHeader (EFI_ACPI_DESCRIPTION_HEADER *Entry)
   printf("       Signature: 0x%-16lX  ", Entry->Signature);
   PrintSignature (Entry->Signature, sizeof (Entry->Signature));
   printf("      @ 0x%016llX\n", &Entry->Signature);
-  printf("          Length: %-18u            @ 0x%016llX\n", Entry->Length, &Entry->Length);
+  printf("          Length: %-04u or    0x%04x             @ 0x%016llX\n", Entry->Length, Entry->Length, &Entry->Length);
   printf("        Revision: %-18u            @ 0x%016llX\n", Entry->Revision, &Entry->Revision);
   printf("        Checksum: 0x%-16X            @ 0x%016llX\n", Entry->Checksum, &Entry->Checksum);
   printf("          OEM_ID: 0x");
@@ -80,19 +80,37 @@ VOID DumpACPIHeader (EFI_ACPI_DESCRIPTION_HEADER *Entry)
   DumpHex (2, 0, Entry->Length, Entry);  printf("\n");
 }
 
-VOID DumpDSDT(EFI_ACPI_DESCRIPTION_HEADER *Entry)
+VOID DumpDSDT (EFI_ACPI_DESCRIPTION_HEADER *Entry)
 {
   EFI_ACPI_DESCRIPTION_HEADER *DSDT;
   EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE *FACP = (EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE *)Entry;
   if (FACP->XDsdt) {
     // Print (L"FACP->XDsdt: 0x%016llX\n", FACP->XDsdt);
-    DSDT = (EFI_ACPI_DESCRIPTION_HEADER *)FACP->XDsdt;
+    DSDT = (EFI_ACPI_DESCRIPTION_HEADER *)(FACP->XDsdt);
     DumpACPIHeader (DSDT);
   }
   else {
     // Print (L"FACP->Dsdt: 0x%016llX\n", FACP->Dsdt);
-    DSDT = (EFI_ACPI_DESCRIPTION_HEADER *)FACP->Dsdt;
+    DSDT = (EFI_ACPI_DESCRIPTION_HEADER *)(FACP->Dsdt);
     DumpACPIHeader (DSDT);
+  }
+}
+
+VOID DumpFACS (EFI_ACPI_DESCRIPTION_HEADER *Entry)
+{
+  EFI_ACPI_DESCRIPTION_HEADER *FACS;
+  EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE *FACP = (EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE *)Entry;
+  if (FACP->XFirmwareCtrl == 0)
+  {
+    FACS = (EFI_ACPI_DESCRIPTION_HEADER *)(FACP->FirmwareCtrl);
+    printf("---------------------------------------------------------------------------------\n");
+    PrintSignature (FACS->Signature, sizeof (FACS->Signature));
+    printf(" @ 0x%016llX\n", FACS);
+    printf("       Signature: 0x%-16lX  ", FACS->Signature);
+    PrintSignature (FACS->Signature, sizeof (FACS->Signature));
+    printf("      @ 0x%016llX\n", &FACS->Signature);
+    printf("          Length: %-04u or    0x%04x             @ 0x%016llX\n\n", FACS->Length, FACS->Length, &FACS->Length);
+    DumpHex (2, 0, FACS->Length, FACS);  printf("\n");  
   }
 }
 
@@ -111,15 +129,21 @@ VOID DumpACPI(EFI_ACPI_DESCRIPTION_HEADER *Entry)
   while (EntryCount--) {
     if (AdrLength == sizeof(UINT64)) {
       Entry = (EFI_ACPI_DESCRIPTION_HEADER *)(*pEntry64++);  // get first Entry address
-      DumpACPIHeader (Entry);
       if (Entry->Signature == EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE)
+      {
         DumpDSDT (Entry);
+        DumpFACS (Entry);
+      }
+      DumpACPIHeader (Entry);
     }
     else {
       Entry = (EFI_ACPI_DESCRIPTION_HEADER *)(*(pEntry32++));     
-      DumpACPIHeader (Entry);
       if (Entry->Signature == EFI_ACPI_6_5_FIXED_ACPI_DESCRIPTION_TABLE_SIGNATURE)
+      {
         DumpDSDT (Entry);
+        DumpFACS (Entry);
+      }
+      DumpACPIHeader (Entry);
     }
   }
 }

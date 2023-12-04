@@ -123,6 +123,7 @@
   SelfPkg/Applications/ACPI_Demo/ACPI_Demo.inf
   SelfPkg/Applications/ACPI_Demo/DumpBGRT.inf
 #  SelfPkg/Applications/ReplaceLogo/ReplaceLogo.inf
+  SelfPkg/Applications/DumpHex/DumpHex.inf
 #### Uefi Drivers.
   SelfPkg/Drivers/UefiMain/UefiMain.inf
   SelfPkg/Drivers/CmosTest/CmosTest.inf

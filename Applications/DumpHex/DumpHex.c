@@ -4,15 +4,28 @@
 #include <Library/UefiBootServicesTableLib.h>    //gST,gBs
 #include <Library/UefiRuntimeServicesTableLib.h> //gRT
 
-#include <stdio.h>
-// #include <stdlib.h>
-
 #include <Library/DebugLib.h>
 #include <Library/ShellCommandLib.h>
 
-int main (IN int Argc, IN char **Argv)
+// #include <stdio.h>
+// #include <stdlib.h>
+
+/***
+  Print a welcoming message.
+
+  Establishes the main structure of the application.
+
+  @retval  0         The application exited normally.
+  @retval  Other     An error occurred.
+***/
+INTN
+EFIAPI
+ShellAppMain (
+  IN UINTN Argc,
+  IN CHAR16 **Argv
+  )
 {
-  printf ("DumpHex: %s\n===============================================================================\n", __func__);
+  Print (L"DumpHex: %a\n===============================================================================\n", __FUNCTION__);
 
   UINT64 Addr;
   UINTN  Length;
@@ -22,17 +35,17 @@ int main (IN int Argc, IN char **Argv)
   switch (Argc)
   {
   case 3:
-    sscanf (Argv[1], "%x", &Addr);
-    sscanf (Argv[2], "%x", &Length);
-    printf ("Addr = 0x%08X, Length = 0x%X\n\n", Addr, Length);
+    Addr   = StrHexToUint64 (Argv[1]);
+    Length = StrHexToUint64 (Argv[2]);
+    Print (L"Addr = 0x%08X, Length = 0x%X\n\n", Addr, Length);
     DumpHex (2, 0, Length, (VOID *)Addr);
     break;
   
   default:   
-    printf ("\ne.g. DumpHex.efi 0xE0000000 0x10\n");
+    Print (L"\ne.g. DumpHex.efi 0xE0000000 0x10\n");
     break;
   }
 
-  printf ("===============================================================================\nDumpHex: %s\n", "End!");
+  Print (L"===============================================================================\nDumpHex: %s\n", L"End!");
   return 0;
 }

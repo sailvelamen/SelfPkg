@@ -20,12 +20,11 @@
   DumpHex.c
 
 [Packages]
-  StdLib/StdLib.dec
   MdePkg/MdePkg.dec
   ShellPkg/ShellPkg.dec
 
 [LibraryClasses]
-  LibC
-  LibStdio
+  UefiLib
   DebugLib
+  ShellCEntryLib
   ShellCommandLib

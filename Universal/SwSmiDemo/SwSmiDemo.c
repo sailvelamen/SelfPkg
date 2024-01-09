@@ -1,4 +1,4 @@
-#include "SWSMIDemo.h"
+#include "SwSmiDemo.h"
 
 EFI_STATUS
 EFIAPI

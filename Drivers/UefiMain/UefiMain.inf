@@ -17,7 +17,7 @@
 
 
 [Sources]
-UefiMain.c
+  UefiMain.c
 
 [Packages]
   MdePkg/MdePkg.dec

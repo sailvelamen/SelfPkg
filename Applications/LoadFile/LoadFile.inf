@@ -1,0 +1,38 @@
+## @file
+#  
+#  Copyright (c) 2017, sailvelamen. All rights reserved.
+#  
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+# 
+## 
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = LoadFile
+  FILE_GUID                      = 0F060BB2-F4E3-DDDC-A0C7-50242B8E91A7
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  LoadFile.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  UefiLib
+  DebugLib
+  ShellCEntryLib
+
+[Guids]
+  gEfiFileInfoGuid
+
+[Protocols]
+  gEfiSimpleFileSystemProtocolGuid              ## SOMETIMES_CONSUMES
+  

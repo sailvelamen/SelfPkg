@@ -1,0 +1,41 @@
+## @file
+#  Sample UEFI Application Reference EDKII Module.
+#
+#  This is a sample shell application that will Update SpiFlash
+#
+##
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = UpdateSpiFlash
+  FILE_GUID                      = 7E629EB5-0C95-DC05-21DD-D96AA2DEE32F
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  SpiFlash.h
+  UpdateSpiFlash.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+  EmbeddedPkg/EmbeddedPkg.dec
+  Silicon/StarFive/JH7110/JH7110.dec
+
+[LibraryClasses]
+  UefiLib
+  DebugLib
+  ShellCEntryLib
+  ShellCommandLib
+
+[Protocols]
+  gJH7110SpiFlashProtocolGuid
+  gJH7110SpiMasterProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid              ## SOMETIMES_CONSUMES
+
+[Guids]
+  gEfiFileInfoGuid

@@ -35,7 +35,7 @@ EFI_STATUS EFIAPI SwSmiDemoMain (
   //
   // Register a SMM handler to handle subsequent SW SMIs.
   // 
-  Status = gSmst->SmiHandlerRegister (SmmSwDispatcher, NULL, &DispatchHandle);
+  Status = gSmst->SmiHandlerRegister ((EFI_MM_HANDLER_ENTRY_POINT)SmmSwDispatcher, NULL, &DispatchHandle);
   ASSERT_EFI_ERROR (Status);
   //
   // Publish PI SMM SwDispatch2 Protocol
